@@ -26,43 +26,44 @@ class NetworkStateViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        unowned let obj = TestObj()
-        progress.cancellationHandler = {
-            obj.hahah()
-        }
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
-        unowned let obj2 = TestObj()
-        progress.pausingHandler = {
-            obj2.hahah()
-        }
-        
-        unowned let obj3 = TestObj()
-        progress.resumingHandler = {
-            obj3.hahah()
-        }
-        
-        DispatchQueue.global().async {
-            
-            for i in 1...100 {
-                self.progress.completedUnitCount = Int64(i)
-                Thread.sleep(forTimeInterval: 1)
-                
-                print("----- \(i)")
-                
-                if i == 5 {
-                    self.progress.pause()
-                }
-                
-                if i == 7 {
-                    self.progress.resume()
-                }
-                
-                if i > 10 {
-                    self.progress.cancel()
-                    break
-                }
+        let request =
+        Alamofire.request("https://google.com").responseString { (response) in
+            if let str = response.value {
+                print(str)
+                self.pageState = .normal
+            } else if let error = response.error {
+                print(error)
+                self.pageState = .error(error)
             }
         }
+        
+        pageState = .loading(request.progress)
+        
+//        pageState = .loading(progress)
+//        DispatchQueue.global().async {
+//
+//            for i in 1...100 {
+//                self.progress.completedUnitCount = Int64(i)
+//                Thread.sleep(forTimeInterval: 1)
+//
+//                print("----- \(i)")
+//
+//                if i == 5 {
+//                    self.progress.pause()
+//                }
+//
+//                if i == 7 {
+//                    self.progress.resume()
+//                }
+//
+//                if i > 10 {
+//                    self.pageState = .normal
+//                    break
+//                }
+//            }
+//        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

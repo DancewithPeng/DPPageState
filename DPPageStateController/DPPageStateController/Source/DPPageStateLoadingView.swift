@@ -18,7 +18,7 @@ open class DPPageStateLoadingView: UIView {
     private var isNewStart = false
     
     /// 加载开始
-    func loadingDidStart() {}
+    open func loadingDidStart() {}
 
     /// 更新加载进度
     ///
@@ -26,19 +26,19 @@ open class DPPageStateLoadingView: UIView {
     ///   - fractionCompleted:  进度完成的百分比
     ///   - totalUnitCount:     总进度
     ///   - completedUnitCount: 完成的进度
-    func loadingDidUpdateProgress(fractionCompleted: Double, totalUnitCount: Int64, completedUnitCount: Int64) {}
+    open func loadingDidUpdateProgress(fractionCompleted: Double, totalUnitCount: Int64, completedUnitCount: Int64) {}
 
     /// 加载暂停
-    func loadingDidPause() {}
+    open func loadingDidPause() {}
 
     /// 加载继续
-    func loadingDidResume() {}
+    open func loadingDidResume() {}
 
     /// 加载取消
-    func loadingDidCancel() {}
+    open func loadingDidCancel() {}
 
     /// 加载完成
-    func loadingDidFinish() {}
+    open func loadingDidFinish() {}
     
     
     /// 进度对象改变
@@ -47,7 +47,10 @@ open class DPPageStateLoadingView: UIView {
         if let progress = newProgress {
             
             // 处理重新开始逻辑
-            isNewStart = true
+//            isNewStart = true
+            DispatchQueue.main.async {
+                self.loadingDidStart()
+            }
             
             // 监听进度变化
             progress.addObserver(self, forKeyPath: "completedUnitCount", options: [.initial, .new], context: nil)
@@ -55,19 +58,27 @@ open class DPPageStateLoadingView: UIView {
             // 处理相关事件
             
             // 取消
-            progress.cancellationHandler = { [unowned self] in
-                self.loadingDidCancel()
-                self.isNewStart = true
+            progress.cancellationHandler = { [weak self] in
+                
+                DispatchQueue.main.async {
+                    self?.loadingDidCancel()
+                }
+                
+//                self?.isNewStart = true
             }
             
             // 暂停
-            progress.pausingHandler = { [unowned self] in
-                self.loadingDidPause()
+            progress.pausingHandler = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.loadingDidPause()
+                }
             }
             
             // 继续
-            progress.resumingHandler = { [unowned self] in
-                self.loadingDidResume()
+            progress.resumingHandler = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.loadingDidResume()
+                }
             }
         }
     }
@@ -79,18 +90,24 @@ open class DPPageStateLoadingView: UIView {
         if let progress = object as? Progress, keyPath == "completedUnitCount" {
             
             // 判断是否重新开始
-            if isNewStart {
-                loadingDidStart()
-                isNewStart = false
-            }
+//            if isNewStart {
+//                DispatchQueue.main.async {
+//                    self.loadingDidStart()
+//                }
+//                isNewStart = false
+//            }
             
             // 更新进度
-            loadingDidUpdateProgress(fractionCompleted: progress.fractionCompleted, totalUnitCount: progress.totalUnitCount, completedUnitCount: progress.completedUnitCount)
+            DispatchQueue.main.async {
+                self.loadingDidUpdateProgress(fractionCompleted: progress.fractionCompleted, totalUnitCount: progress.totalUnitCount, completedUnitCount: progress.completedUnitCount)
+            }
             
             // 进度完成
-            if progress.completedUnitCount >= progress.totalUnitCount {
-                loadingDidFinish()
-                isNewStart = true
+            if progress.totalUnitCount > 0, progress.completedUnitCount >= progress.totalUnitCount {
+                DispatchQueue.main.async {
+                    self.loadingDidFinish()
+                }
+//                isNewStart = true
             }
         }
     }

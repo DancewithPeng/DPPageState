@@ -38,16 +38,16 @@ public protocol DPPageStateController {
     associatedtype ErrorView: UIView, DPPageStateErrorView
     
     /// 加载页类型
-//    associatedtype LoadingView: UIView, DPPageStateLoadingView
+//    associatedtype LoadingView: DPPageStateLoadingView
     
     
     /// 页面状态
     var pageState: DPPageState { get set }        
     
-    func initialView() -> InitialView
-    func emptyView(message: String?) -> EmptyView
-    func errorView(error: Error) -> ErrorView
-//    func loadingView(progress: Progress?) -> LoadingView
+    func viewForInitial() -> InitialView
+    func viewForEmpty() -> EmptyView
+    func viewForError(_ error: Error) -> ErrorView
+    func viewForLoading(progress: Progress?) -> DPPageStateLoadingView
     
     /// 状态页容器
     var stateContainerView: UIView { get }
@@ -66,16 +66,18 @@ public extension DPPageStateController {
 
         switch state {
         case .initial:
-            stateView = initialView()
+            stateView = viewForInitial()
             stateView?.tag = DPPageStateViewTag.initial.rawValue
         case .empty(let message):
-            stateView = emptyView(message: message)
+            stateView = viewForEmpty()
             stateView?.tag = DPPageStateViewTag.empty.rawValue
         case .error(let error):
-            stateView = errorView(error: error)
+            stateView = viewForError(error)
             stateView?.tag = DPPageStateViewTag.error.rawValue
         case .loading(let progress):
-//            stateView = loadingView(progress: progress)
+            let loadingView = viewForLoading(progress: progress)
+            loadingView.loadingProgress = progress
+            stateView = loadingView
             stateView?.tag = DPPageStateViewTag.loading.rawValue
         case .normal:
             stateView = nil
@@ -85,28 +87,34 @@ public extension DPPageStateController {
             
             if (sView.superview != stateContainerView) {
                 
-                // 移除原本的StateView
-                removeStateViewFromContainerView()
-                
-                // 添加新的StateView
-                stateContainerView.addSubview(sView)
-                
-                // 添加相关约束
-                sView.translatesAutoresizingMaskIntoConstraints = false
-                sView.leadingAnchor.constraint(equalTo: stateContainerView.leadingAnchor).isActive = true
-                sView.topAnchor.constraint(equalTo: stateContainerView.topAnchor).isActive = true
-                sView.trailingAnchor.constraint(equalTo: stateContainerView.trailingAnchor).isActive = true
-                sView.bottomAnchor.constraint(equalTo: stateContainerView.bottomAnchor).isActive = true
-
-                if stateContainerView is UIScrollView {
-                    sView.heightAnchor.constraint(equalTo: stateContainerView.heightAnchor).isActive = true
-                    sView.widthAnchor.constraint(equalTo: stateContainerView.widthAnchor).isActive = true
+                // UI操作需要在主线程进行
+                DispatchQueue.main.async {
+                    
+                    // 移除原本的StateView
+                    self.removeStateViewFromContainerView()
+                    
+                    // 添加新的StateView
+                    self.stateContainerView.addSubview(sView)
+                    
+                    // 添加相关约束
+                    sView.translatesAutoresizingMaskIntoConstraints = false
+                    sView.leadingAnchor.constraint(equalTo: self.stateContainerView.leadingAnchor).isActive = true
+                    sView.topAnchor.constraint(equalTo: self.stateContainerView.topAnchor).isActive = true
+                    sView.trailingAnchor.constraint(equalTo: self.stateContainerView.trailingAnchor).isActive = true
+                    sView.bottomAnchor.constraint(equalTo: self.stateContainerView.bottomAnchor).isActive = true
+                    
+                    if self.stateContainerView is UIScrollView {
+                        sView.heightAnchor.constraint(equalTo: self.stateContainerView.heightAnchor).isActive = true
+                        sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor).isActive = true
+                    }
                 }
             }
         } else {
             
-            // 移除原本的StateView
-            removeStateViewFromContainerView()
+            DispatchQueue.main.async {
+                // 移除原本的StateView
+                self.removeStateViewFromContainerView()
+            }
         }
     }
     
@@ -122,10 +130,13 @@ public extension DPPageStateController {
                 
             case DPPageStateViewTag.initial.rawValue: fallthrough
             case DPPageStateViewTag.empty.rawValue: fallthrough
-            case DPPageStateViewTag.error.rawValue: fallthrough
             case DPPageStateViewTag.loading.rawValue:
+                if let loadingView = subView as? DPPageStateLoadingView {
+                    loadingView.loadingDidFinish()
+                }
+                fallthrough
+            case DPPageStateViewTag.error.rawValue:
                 subView.removeFromSuperview()
-                
             default: break
             }
         }

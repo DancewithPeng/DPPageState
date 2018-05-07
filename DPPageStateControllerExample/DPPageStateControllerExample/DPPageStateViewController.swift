@@ -20,29 +20,26 @@ class DPPageStateViewController: UIViewController, DPPageStateController {
     typealias InitialView = DPPageStateInitialView
     typealias EmptyView = DPPageStateEmptyView
     typealias ErrorView = DPPageStateDefaultErrorView
-//    typealias LoadingView = DPPageStateDefaultLoadingView
-    
-    func initialView() -> DPPageStateInitialView {
+
+    func viewForInitial() -> DPPageStateInitialView {
         return DPPageStateInitialView(frame: CGRect.zero)
     }
     
-    func emptyView(message: String?) -> DPPageStateEmptyView {
+    func viewForEmpty() -> DPPageStateEmptyView {
         return DPPageStateEmptyView(frame: CGRect.zero)
     }
     
-    func errorView(error: Error) -> DPPageStateDefaultErrorView {
+    func viewForError(_ error: Error) -> DPPageStateDefaultErrorView {
         return DPPageStateDefaultErrorView(frame: CGRect.zero)
     }
     
-//    func loadingView(progress: Progress?) -> DPPageStateDefaultLoadingView {                
-//        return DPPageStateDefaultLoadingView(frame: CGRect.zero)
-//    }
+    func viewForLoading(progress: Progress?) -> DPPageStateLoadingView {
+        return TestLoadingView(frame: CGRect.zero)
+    }
     
     var stateContainerView: UIView {
         return self.view
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

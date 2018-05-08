@@ -1,6 +1,6 @@
 //
-//  DPPageStateController.swift
-//  DPPageStateController
+//  DPPageState.swift
+//  DPPageState
 //
 //  Created by 张鹏 on 2018/3/30.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
@@ -9,46 +9,30 @@
 import Foundation
 
 
-/// 页面状态
-///
-/// - normal:  正常状态，不会显示状态页
-/// - initial: 初始状态
-/// - empty:   空数据状态
-/// - error:   错误状态
-/// - loading: 加载状态
-public enum DPPageState {
-    case normal
-    case initial(Any?)
-    case empty(Any?)
-    case error(Error)
-    case loading(Progress?)
-}
-
-
 /// 页面状态控制器
-public protocol DPPageStateController {
+public protocol StateController {
     
     /// 页面状态
-    var pageState: DPPageState { get set }        
+    var pageState: State { get set }
     
     // 以下四个方法用于获取状态对应的状态页，每个方法都有可能反复调用多次
-    func viewForInitial(userInfo: Any?) -> DPPageStateInitialView
-    func viewForEmpty(userInfo: Any?) -> DPPageStateEmptyView
-    func viewForError(_ error: Error) -> DPPageStateErrorView
-    func viewForLoading(progress: Progress?) -> DPPageStateLoadingView
+    func viewForInitial(userInfo: Any?) -> InitialView
+    func viewForEmpty(userInfo: Any?) -> EmptyView
+    func viewForError(_ error: Error) -> ErrorView
+    func viewForLoading(progress: Progress?) -> LoadingView
     
     /// 状态页容器
     var stateContainerView: UIView { get }
 }
 
 
-// MARK: - 为 `DPPageStateController` 协议添加 `defaultHandingForStateChanged(newState:)` 方法
-public extension DPPageStateController {
+// MARK: - 为 `StateController` 协议添加 `defaultHandingForStateChanged(newState:)` 方法
+public extension StateController {
     
     /// 状态变化的默认处理
     ///
     /// - Parameter state: 新的状态
-    func defaultHandingForStateChanged(newState state: DPPageState) {
+    func defaultHandingForStateChanged(newState state: State) {
 
         // UI处理需要在主线程中执行
         DispatchQueue.main.async {
@@ -108,10 +92,10 @@ public extension DPPageStateController {
         for subView in subViews {
             
             // 状态页
-            if subView is DPPageStateView {
+            if subView is StateView {
                 
                 // 加载状态页
-                if let loadingView = subView as? DPPageStateLoadingView {
+                if let loadingView = subView as? LoadingView {
                     loadingView.loadingDidCancel()
                 }
                 

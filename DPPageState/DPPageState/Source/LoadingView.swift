@@ -1,6 +1,6 @@
 //
-//  DPPageStateLoadingView.swift
-//  DPPageStateController
+//  LoadingView.swift
+//  DPPageState
 //
 //  Created by 张鹏 on 2018/5/7.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
@@ -14,7 +14,7 @@ private let kLoadingProgressEncodeKey = "kLoadingProgressEncodeKey"
 
 
 /// 加载中的状态页
-open class DPPageStateLoadingView: DPPageStateView {
+open class LoadingView: StateView {
     
     /// 加载进度
     var loadingProgress: Progress? { didSet { loadingProgressDidChange(newProgress: loadingProgress) } }

@@ -1,13 +1,13 @@
 //
 //  BaseViewController.swift
-//  DPPageStateControllerExample
+//  DPPageStateExample
 //
 //  Created by 张鹏 on 2018/4/4.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
 //
 
 import UIKit
-import DPPageStateController
+import DPPageState
 
 enum MyError: Error {
     case test

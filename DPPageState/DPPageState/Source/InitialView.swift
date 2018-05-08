@@ -1,6 +1,6 @@
 //
-//  DPPageStateEmptyView.swift
-//  DPPageStateController
+//  InitialView.swift
+//  DPPageState
 //
 //  Created by 张鹏 on 2018/5/8.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
@@ -13,8 +13,8 @@ import UIKit
 private let kUserInfoEncodeKey = "kUserInfoEncodeKey"
 
 
-/// 空白状态页
-open class DPPageStateEmptyView: DPPageStateView {
+/// 初始化状态页
+open class InitialView: StateView {
     
     /// 用户信息，预留属性，子类可以直接使用此属性传递相关信息
     public var userInfo: Any? { didSet { userInfoDidChange(userInfo) } }

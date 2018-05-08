@@ -1,19 +1,19 @@
 //
-//  TestErrorView.swift
-//  DPPageStateControllerExample
+//  TestInitialView.swift
+//  DPPageStateExample
 //
 //  Created by 张鹏 on 2018/5/8.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
 //
 
-import DPPageStateController
+import DPPageState
 
-class TestErrorView: DPPageStateErrorView {
+class TestInitialView: InitialView {
     
     lazy var messageLabel = UILabel(frame: CGRect.zero)
     
-    override init(error: Error) {
-        super.init(error: error)
+    override init(userInfo: Any? = nil) {
+        super.init(userInfo: userInfo)
         
         setupSubviews()
     }
@@ -30,21 +30,17 @@ class TestErrorView: DPPageStateErrorView {
     
     func setupSubviews() {
         
-        backgroundColor = .red
+        backgroundColor = .cyan
         
         addSubview(messageLabel)
-        messageLabel.text = error.localizedDescription
-        messageLabel.textColor = .white
-        messageLabel.numberOfLines = 0
+        if let info = userInfo {
+            messageLabel.text = "\(info)"
+        }
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 60).isActive = true
+        messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -60).isActive = true
         messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        messageLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 60)
-        messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -60)        
-    }
-    
-    override func errorDidChange(_ error: Error) {
-        messageLabel.text = error.localizedDescription
     }
 }

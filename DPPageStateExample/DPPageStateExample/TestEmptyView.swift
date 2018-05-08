@@ -1,14 +1,14 @@
 //
 //  TestEmptyView.swift
-//  DPPageStateControllerExample
+//  DPPageStateExample
 //
 //  Created by 张鹏 on 2018/5/8.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
 //
 
-import DPPageStateController
+import DPPageState
 
-class TestEmptyView: DPPageStateEmptyView {
+class TestEmptyView: EmptyView {
     
     lazy var messageLabel = UILabel(frame: CGRect.zero)
     

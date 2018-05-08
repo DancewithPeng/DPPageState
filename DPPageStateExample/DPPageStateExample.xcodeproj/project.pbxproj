@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EAA86E27BA520BF9CFCD0EF /* Pods_DPPageStateExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31B6D025049A20DD23A59340 /* Pods_DPPageStateExample.framework */; };
 		6E45A29C20A16E5A009C6134 /* TestEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */; };
 		6E45A29E20A18547009C6134 /* TestInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E45A29D20A18547009C6134 /* TestInitialView.swift */; };
-		6E5E890D207350D700837FF2 /* DPPageStateController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E890B207350CE00837FF2 /* DPPageStateController.framework */; };
-		6E5E890E207350D700837FF2 /* DPPageStateController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E890B207350CE00837FF2 /* DPPageStateController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E5E891320745B9B00837FF2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E891220745B9B00837FF2 /* BaseViewController.swift */; };
 		6E5E891520745D5700837FF2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E891420745D5700837FF2 /* CollectionViewController.swift */; };
 		6E6B4B7720A0A5280024CCD0 /* TestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B4B7620A0A5280024CCD0 /* TestLoadingView.swift */; };
+		6E6B4C0C20A206F10024CCD0 /* DPPageState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6B4C0A20A206EA0024CCD0 /* DPPageState.framework */; };
+		6E6B4C0D20A206F10024CCD0 /* DPPageState.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6B4C0A20A206EA0024CCD0 /* DPPageState.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EA6AFC1206E2F04006DE8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC0206E2F04006DE8E5 /* AppDelegate.swift */; };
 		6EA6AFC3206E2F04006DE8E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC2206E2F04006DE8E5 /* ViewController.swift */; };
 		6EA6AFC6206E2F04006DE8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC4206E2F04006DE8E5 /* Main.storyboard */; };
@@ -26,13 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6E5E890F207350D700837FF2 /* Embed Frameworks */ = {
+		6E6B4C0E20A206F20024CCD0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6E5E890E207350D700837FF2 /* DPPageStateController.framework in Embed Frameworks */,
+				6E6B4C0D20A206F10024CCD0 /* DPPageState.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,7 +42,10 @@
 
 /* Begin PBXFileReference section */
 		25352A5740D5A81AE4A00415 /* Pods-DPPageStateControllerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		31B6D025049A20DD23A59340 /* Pods_DPPageStateExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPPageStateExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AF41CF032487FC241ADD1CE /* Pods-DPPageStateExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample.release.xcconfig"; sourceTree = "<group>"; };
 		517A2B032330C566844F0B55 /* Pods_DPPageStateControllerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPPageStateControllerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57C414293025363F3168A9E0 /* Pods-DPPageStateExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample.debug.xcconfig"; sourceTree = "<group>"; };
 		69FCB7F1A7F0EFAE230F7DAC /* Pods-DPPageStateControllerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.release.xcconfig"; sourceTree = "<group>"; };
 		6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmptyView.swift; sourceTree = "<group>"; };
 		6E45A29D20A18547009C6134 /* TestInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInitialView.swift; sourceTree = "<group>"; };
@@ -49,13 +53,14 @@
 		6E5E891220745B9B00837FF2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6E5E891420745D5700837FF2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		6E6B4B7620A0A5280024CCD0 /* TestLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadingView.swift; sourceTree = "<group>"; };
+		6E6B4C0A20A206EA0024CCD0 /* DPPageState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DPPageState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA6AFC0206E2F04006DE8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA6AFC2206E2F04006DE8E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6EA6AFC5206E2F04006DE8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EA6AFC7206E2F04006DE8E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EA6AFCA206E2F04006DE8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EA6AFCC206E2F04006DE8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6EC0083920A020B70028FA28 /* DPPageStateControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPPageStateControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EC0083920A020B70028FA28 /* DPPageStateExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPPageStateExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC0083A20A0212C0028FA28 /* NetworkStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateViewController.swift; sourceTree = "<group>"; };
 		6ED5E2AF20A052BA00DB29AE /* DPPageStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateViewController.swift; sourceTree = "<group>"; };
 		6ED5E2BD20A137C600DB29AE /* TestErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrorView.swift; sourceTree = "<group>"; };
@@ -66,8 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E5E890D207350D700837FF2 /* DPPageStateController.framework in Frameworks */,
 				FF6ED7A197D9F5E0E6443702 /* Pods_DPPageStateControllerExample.framework in Frameworks */,
+				4EAA86E27BA520BF9CFCD0EF /* Pods_DPPageStateExample.framework in Frameworks */,
+				6E6B4C0C20A206F10024CCD0 /* DPPageState.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,8 @@
 			children = (
 				25352A5740D5A81AE4A00415 /* Pods-DPPageStateControllerExample.debug.xcconfig */,
 				69FCB7F1A7F0EFAE230F7DAC /* Pods-DPPageStateControllerExample.release.xcconfig */,
+				57C414293025363F3168A9E0 /* Pods-DPPageStateExample.debug.xcconfig */,
+				4AF41CF032487FC241ADD1CE /* Pods-DPPageStateExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -86,8 +94,10 @@
 		6E5E890A207350CE00837FF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E6B4C0A20A206EA0024CCD0 /* DPPageState.framework */,
 				6E5E890B207350CE00837FF2 /* DPPageStateController.framework */,
 				517A2B032330C566844F0B55 /* Pods_DPPageStateControllerExample.framework */,
+				31B6D025049A20DD23A59340 /* Pods_DPPageStateExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,14 +105,14 @@
 		6EA6AFB4206E2F04006DE8E5 = {
 			isa = PBXGroup;
 			children = (
-				6EA6AFBF206E2F04006DE8E5 /* DPPageStateControllerExample */,
+				6EA6AFBF206E2F04006DE8E5 /* DPPageStateExample */,
 				6E5E890A207350CE00837FF2 /* Frameworks */,
 				6DD35FABDB19B81D25681135 /* Pods */,
-				6EC0083920A020B70028FA28 /* DPPageStateControllerExample.app */,
+				6EC0083920A020B70028FA28 /* DPPageStateExample.app */,
 			);
 			sourceTree = "<group>";
 		};
-		6EA6AFBF206E2F04006DE8E5 /* DPPageStateControllerExample */ = {
+		6EA6AFBF206E2F04006DE8E5 /* DPPageStateExample */ = {
 			isa = PBXGroup;
 			children = (
 				6EA6AFC0206E2F04006DE8E5 /* AppDelegate.swift */,
@@ -120,30 +130,30 @@
 				6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */,
 				6E45A29D20A18547009C6134 /* TestInitialView.swift */,
 			);
-			path = DPPageStateControllerExample;
+			path = DPPageStateExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6EA6AFBC206E2F04006DE8E5 /* DPPageStateControllerExample */ = {
+		6EA6AFBC206E2F04006DE8E5 /* DPPageStateExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EA6AFCF206E2F04006DE8E5 /* Build configuration list for PBXNativeTarget "DPPageStateControllerExample" */;
+			buildConfigurationList = 6EA6AFCF206E2F04006DE8E5 /* Build configuration list for PBXNativeTarget "DPPageStateExample" */;
 			buildPhases = (
 				C0CF2209D97D295A5A360404 /* [CP] Check Pods Manifest.lock */,
 				6EA6AFB9206E2F04006DE8E5 /* Sources */,
 				6EA6AFBA206E2F04006DE8E5 /* Frameworks */,
 				6EA6AFBB206E2F04006DE8E5 /* Resources */,
-				6E5E890F207350D700837FF2 /* Embed Frameworks */,
 				95BA2F80EAB9DCBFC3DAA8EC /* [CP] Embed Pods Frameworks */,
+				6E6B4C0E20A206F20024CCD0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DPPageStateControllerExample;
+			name = DPPageStateExample;
 			productName = DPPageStateControllerExample;
-			productReference = 6EC0083920A020B70028FA28 /* DPPageStateControllerExample.app */;
+			productReference = 6EC0083920A020B70028FA28 /* DPPageStateExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6EA6AFB8206E2F04006DE8E5 /* Build configuration list for PBXProject "DPPageStateControllerExample" */;
+			buildConfigurationList = 6EA6AFB8206E2F04006DE8E5 /* Build configuration list for PBXProject "DPPageStateExample" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -175,7 +185,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6EA6AFBC206E2F04006DE8E5 /* DPPageStateControllerExample */,
+				6EA6AFBC206E2F04006DE8E5 /* DPPageStateExample */,
 			);
 		};
 /* End PBXProject section */
@@ -200,7 +210,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample-frameworks.sh",
+				"${SRCROOT}/../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -209,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2209D97D295A5A360404 /* [CP] Check Pods Manifest.lock */ = {
@@ -223,7 +233,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DPPageStateControllerExample-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DPPageStateExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -385,11 +395,11 @@
 		};
 		6EA6AFD0206E2F04006DE8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25352A5740D5A81AE4A00415 /* Pods-DPPageStateControllerExample.debug.xcconfig */;
+			baseConfigurationReference = 57C414293025363F3168A9E0 /* Pods-DPPageStateExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DPPageStateControllerExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DPPageStateExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DP.Utilities.DPPageStateControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -400,11 +410,11 @@
 		};
 		6EA6AFD1206E2F04006DE8E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69FCB7F1A7F0EFAE230F7DAC /* Pods-DPPageStateControllerExample.release.xcconfig */;
+			baseConfigurationReference = 4AF41CF032487FC241ADD1CE /* Pods-DPPageStateExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DPPageStateControllerExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DPPageStateExample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DP.Utilities.DPPageStateControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,7 +426,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6EA6AFB8206E2F04006DE8E5 /* Build configuration list for PBXProject "DPPageStateControllerExample" */ = {
+		6EA6AFB8206E2F04006DE8E5 /* Build configuration list for PBXProject "DPPageStateExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EA6AFCD206E2F04006DE8E5 /* Debug */,
@@ -425,7 +435,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6EA6AFCF206E2F04006DE8E5 /* Build configuration list for PBXNativeTarget "DPPageStateControllerExample" */ = {
+		6EA6AFCF206E2F04006DE8E5 /* Build configuration list for PBXNativeTarget "DPPageStateExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EA6AFD0206E2F04006DE8E5 /* Debug */,

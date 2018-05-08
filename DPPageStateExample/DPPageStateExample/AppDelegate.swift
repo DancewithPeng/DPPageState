@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  DPPageStateControllerExample
+//  DPPageStateExample
 //
 //  Created by 张鹏 on 2018/3/30.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.

@@ -1,15 +1,15 @@
 //
 //  TestLoadingView.swift
-//  DPPageStateControllerExample
+//  DPPageStateExample
 //
 //  Created by DancewithPeng on 2018/5/7.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
 //
 
-import DPPageStateController
+import DPPageState
 
-class TestLoadingView: DPPageStateLoadingView {
-    
+class TestLoadingView: LoadingView {
+        
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override init(loadingProgress: Progress?) {
@@ -47,9 +47,5 @@ class TestLoadingView: DPPageStateLoadingView {
     override func loadingDidFinish() {
         activityIndicator.stopAnimating()
         print("哦哦哦哦")
-    }
-    
-    deinit {
-        print("🐶🐶🐶")
     }
 }

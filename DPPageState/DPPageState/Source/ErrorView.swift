@@ -1,6 +1,6 @@
 //
-//  DPPageStateErrorView.swift
-//  DPPageStateController
+//  ErrorView.swift
+//  DPPageState
 //
 //  Created by 张鹏 on 2018/5/8.
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
@@ -14,7 +14,7 @@ private let kErrorEncodeKey = "kErrorEncodeKey"
 
 
 /// 错误状态页
-open class DPPageStateErrorView: DPPageStateView {
+open class ErrorView: StateView {
     
     public var error: Error { didSet { errorDidChange(error) } }
     

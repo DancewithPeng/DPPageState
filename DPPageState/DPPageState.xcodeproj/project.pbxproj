@@ -16,7 +16,6 @@
 		6ED5E2BA20A0750100DB29AE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2B920A0750100DB29AE /* LoadingView.swift */; };
 		6ED5E2BC20A1334600DB29AE /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2BB20A1334600DB29AE /* ErrorView.swift */; };
 		DF3457E4A266D328D82FB253 /* Pods_DPPageState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51FB7898FC671DD7032BF31A /* Pods_DPPageState.framework */; };
-		FB8B76C7DB80EAF4578480DA /* Pods_DPPageStateController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3F1B9D22CC59123FB044F1 /* Pods_DPPageStateController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB8B76C7DB80EAF4578480DA /* Pods_DPPageStateController.framework in Frameworks */,
 				DF3457E4A266D328D82FB253 /* Pods_DPPageState.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

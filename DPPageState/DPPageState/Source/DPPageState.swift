@@ -6,7 +6,7 @@
 //  Copyright © 2018年 dancewithpeng@gmail.com. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 /// 页面状态控制器
@@ -15,24 +15,45 @@ public protocol StateController {
     /// 页面状态
     var pageState: State { get set }
     
-    // 以下四个方法用于获取状态对应的状态页，每个方法都有可能反复调用多次
-    func viewForInitial(userInfo: Any?) -> InitialView
-    func viewForEmpty(userInfo: Any?) -> EmptyView
-    func viewForError(_ error: Error) -> ErrorView
-    func viewForLoading(progress: Progress?) -> LoadingView
-    
     /// 状态页容器
     var stateContainerView: UIView { get }
+    
+    
+    // 以下四个方法用于获取状态对应的状态页，每个方法都有可能反复调用多次
+    
+    /// 获取初始状态页
+    ///
+    /// - Parameter userInfo: 附带的用户信息
+    /// - Returns: 初始状态页
+    func viewForInitial(with userInfo: Any?) -> InitialView
+    
+    /// 获取空状态页
+    ///
+    /// - Parameter userInfo: 附带的用户信息
+    /// - Returns: 空状态页
+    func viewForEmpty(with userInfo: Any?) -> EmptyView
+    
+    /// 获取错误状态页
+    ///
+    /// - Parameter error: 错误信息
+    /// - Returns: 错误状态页
+    func viewForError(_ error: Error) -> ErrorView
+    
+    /// 获取加载状态页
+    ///
+    /// - Parameter progress: 加载进度
+    /// - Returns: 加载状态页
+    func viewForLoading(with progress: Progress?) -> LoadingView
 }
 
 
-// MARK: - 为 `StateController` 协议添加 `defaultHandingForStateChanged(newState:)` 方法
+// MARK: - 为 `StateController` 协议添加 `defaultHandingChange(_:)` 方法
 public extension StateController {
     
     /// 状态变化的默认处理
     ///
     /// - Parameter state: 新的状态
-    func defaultHandingForStateChanged(newState state: State) {
+    func defaultHandingChange(_ newState: State) {
 
         // UI处理需要在主线程中执行
         DispatchQueue.main.async {
@@ -40,15 +61,15 @@ public extension StateController {
             var stateView: UIView? = nil
             
             // 根据状态获取对应的StateView
-            switch state {
+            switch newState {
             case .initial(let userInfo):
-                stateView = self.viewForInitial(userInfo: userInfo)
+                stateView = self.viewForInitial(with: userInfo)
             case .empty(let userInfo):
-                stateView = self.viewForEmpty(userInfo: userInfo)
+                stateView = self.viewForEmpty(with: userInfo)
             case .error(let error):
                 stateView = self.viewForError(error)
             case .loading(let progress):
-                stateView = self.viewForLoading(progress: progress)
+                stateView = self.viewForLoading(with: progress)
             case .normal:
                 stateView = nil
             }
@@ -59,7 +80,7 @@ public extension StateController {
                 if (sView.superview != self.stateContainerView) {
                     
                     // 移除原本的StateView
-                    self.removeStateViewFromContainerView()
+                    self.removeStateViews()
                     
                     // 添加新的StateView
                     self.stateContainerView.addSubview(sView)
@@ -78,14 +99,14 @@ public extension StateController {
                 }
             } else {
                 // 移除原本的StateView
-                self.removeStateViewFromContainerView()
+                self.removeStateViews()
             }
         }
     }
     
     
     /// 移除容器上的StateView
-    private func removeStateViewFromContainerView() {
+    private func removeStateViews() {
         
         let subViews = stateContainerView.subviews;
         
@@ -94,7 +115,7 @@ public extension StateController {
             // 状态页
             if subView is StateView {
                 
-                // 加载状态页
+                // 加载状态页，需要先调用Cancel方法
                 if let loadingView = subView as? LoadingView {
                     loadingView.loadingDidCancel()
                 }

@@ -17,20 +17,20 @@ private let kLoadingProgressEncodeKey = "kLoadingProgressEncodeKey"
 open class LoadingView: StateView {
     
     /// 加载进度
-    var loadingProgress: Progress? { didSet { loadingProgressDidChange(newProgress: loadingProgress) } }
+    var loadingProgress: Progress? { didSet { loadingProgressDidChange(loadingProgress) } }
     
     public init(loadingProgress: Progress? = nil) {
         self.loadingProgress = loadingProgress
         super.init(frame: CGRect.zero)
         
-        loadingProgressDidChange(newProgress: loadingProgress)
+        loadingProgressDidChange(loadingProgress)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         loadingProgress = aDecoder.decodeObject(forKey: kLoadingProgressEncodeKey) as? Progress
         super.init(coder: aDecoder)
         
-        loadingProgressDidChange(newProgress: loadingProgress)
+        loadingProgressDidChange(loadingProgress)
     }
     
     open override func encode(with aCoder: NSCoder) {
@@ -63,7 +63,7 @@ open class LoadingView: StateView {
     
     
     /// 进度对象改变
-    private func loadingProgressDidChange(newProgress: Progress?) {
+    private func loadingProgressDidChange(_ newProgress: Progress?) {
         
         // 处理重新开始逻辑
         DispatchQueue.main.async {

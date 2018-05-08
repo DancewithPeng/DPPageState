@@ -9,21 +9,21 @@
 import UIKit
 import DPPageState
 
-class DPPageStateViewController: UIViewController, StateController {
+class DPPageStateViewController: UIViewController, DPPageState.StateController {
     
     private lazy var errorViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(errorViewDidTap(tapGesture:)))
     
-    var pageState: State = .normal {
+    var pageState: DPPageState.State = .normal {
         didSet {
-            defaultHandingForStateChanged(newState: pageState)
+            defaultHandingChange(pageState)
         }
     }
     
-    func viewForInitial(userInfo: Any?) -> InitialView {
+    func viewForInitial(with userInfo: Any?) -> InitialView {
         return TestInitialView(userInfo: userInfo)
     }
 
-    func viewForEmpty(userInfo: Any?) -> EmptyView {
+    func viewForEmpty(with userInfo: Any?) -> EmptyView {
         return TestEmptyView(userInfo: userInfo)
     }
 
@@ -35,7 +35,7 @@ class DPPageStateViewController: UIViewController, StateController {
         return errorView
     }
 
-    func viewForLoading(progress: Progress?) -> LoadingView {
+    func viewForLoading(with progress: Progress?) -> LoadingView {
         return TestLoadingView(loadingProgress: progress)
     }
     

@@ -23,7 +23,6 @@
 		6EC0083B20A0212C0028FA28 /* NetworkStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC0083A20A0212C0028FA28 /* NetworkStateViewController.swift */; };
 		6ED5E2B020A052BA00DB29AE /* DPPageStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2AF20A052BA00DB29AE /* DPPageStateViewController.swift */; };
 		6ED5E2BE20A137C600DB29AE /* TestErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2BD20A137C600DB29AE /* TestErrorView.swift */; };
-		FF6ED7A197D9F5E0E6443702 /* Pods_DPPageStateControllerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517A2B032330C566844F0B55 /* Pods_DPPageStateControllerExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF6ED7A197D9F5E0E6443702 /* Pods_DPPageStateControllerExample.framework in Frameworks */,
 				4EAA86E27BA520BF9CFCD0EF /* Pods_DPPageStateExample.framework in Frameworks */,
 				6E6B4C0C20A206F10024CCD0 /* DPPageState.framework in Frameworks */,
 			);

@@ -11,34 +11,41 @@ import DPPageStateController
 
 class DPPageStateViewController: UIViewController, DPPageStateController {
     
+    private lazy var errorViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(errorViewDidTap(tapGesture:)))
+    
     var pageState: DPPageState = .normal {
         didSet {
             defaultHandingForStateChanged(newState: pageState)
         }
     }
     
-    typealias InitialView = DPPageStateInitialView
-    typealias EmptyView = DPPageStateEmptyView
-    typealias ErrorView = DPPageStateDefaultErrorView
+    func viewForInitial(userInfo: Any?) -> DPPageStateInitialView {
+        return TestInitialView(userInfo: userInfo)
+    }
 
-    func viewForInitial() -> DPPageStateInitialView {
-        return DPPageStateInitialView(frame: CGRect.zero)
+    func viewForEmpty(userInfo: Any?) -> DPPageStateEmptyView {
+        return TestEmptyView(userInfo: userInfo)
     }
-    
-    func viewForEmpty() -> DPPageStateEmptyView {
-        return DPPageStateEmptyView(frame: CGRect.zero)
+
+    func viewForError(_ error: Error) -> DPPageStateErrorView {
+        let errorView = TestErrorView(error: error)
+        if errorView.gestureRecognizers?.contains(errorViewTapGesture) != true {
+            errorView.addGestureRecognizer(errorViewTapGesture)
+        }
+        return errorView
     }
-    
-    func viewForError(_ error: Error) -> DPPageStateDefaultErrorView {
-        return DPPageStateDefaultErrorView(frame: CGRect.zero)
-    }
-    
+
     func viewForLoading(progress: Progress?) -> DPPageStateLoadingView {
-        return TestLoadingView(frame: CGRect.zero)
+        return TestLoadingView(loadingProgress: progress)
     }
     
     var stateContainerView: UIView {
         return self.view
+    }
+    
+    @objc
+    open func errorViewDidTap(tapGesture: UITapGestureRecognizer) {
+        
     }
 
     override func viewDidLoad() {

@@ -12,8 +12,8 @@ class TestLoadingView: DPPageStateLoadingView {
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(loadingProgress: Progress?) {
+        super.init(loadingProgress: loadingProgress)
         
         setupSubviews()
     }

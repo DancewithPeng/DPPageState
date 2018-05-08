@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E45A29C20A16E5A009C6134 /* TestEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */; };
+		6E45A29E20A18547009C6134 /* TestInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E45A29D20A18547009C6134 /* TestInitialView.swift */; };
 		6E5E890D207350D700837FF2 /* DPPageStateController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E890B207350CE00837FF2 /* DPPageStateController.framework */; };
 		6E5E890E207350D700837FF2 /* DPPageStateController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5E890B207350CE00837FF2 /* DPPageStateController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E5E891320745B9B00837FF2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E891220745B9B00837FF2 /* BaseViewController.swift */; };
@@ -19,10 +21,7 @@
 		6EA6AFCB206E2F04006DE8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC9206E2F04006DE8E5 /* LaunchScreen.storyboard */; };
 		6EC0083B20A0212C0028FA28 /* NetworkStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC0083A20A0212C0028FA28 /* NetworkStateViewController.swift */; };
 		6ED5E2B020A052BA00DB29AE /* DPPageStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2AF20A052BA00DB29AE /* DPPageStateViewController.swift */; };
-		6ED5E2B220A0532E00DB29AE /* DPPageStateInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2B120A0532E00DB29AE /* DPPageStateInitialView.swift */; };
-		6ED5E2B420A053B800DB29AE /* DPPageStateEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2B320A053B800DB29AE /* DPPageStateEmptyView.swift */; };
-		6ED5E2B620A053EE00DB29AE /* DPPageStateErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2B520A053EE00DB29AE /* DPPageStateErrorView.swift */; };
-		6ED5E2B820A055B900DB29AE /* DPPageStateDefaultLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2B720A055B900DB29AE /* DPPageStateDefaultLoadingView.swift */; };
+		6ED5E2BE20A137C600DB29AE /* TestErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5E2BD20A137C600DB29AE /* TestErrorView.swift */; };
 		FF6ED7A197D9F5E0E6443702 /* Pods_DPPageStateControllerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 517A2B032330C566844F0B55 /* Pods_DPPageStateControllerExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +43,8 @@
 		25352A5740D5A81AE4A00415 /* Pods-DPPageStateControllerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.debug.xcconfig"; sourceTree = "<group>"; };
 		517A2B032330C566844F0B55 /* Pods_DPPageStateControllerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPPageStateControllerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FCB7F1A7F0EFAE230F7DAC /* Pods-DPPageStateControllerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.release.xcconfig"; sourceTree = "<group>"; };
+		6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmptyView.swift; sourceTree = "<group>"; };
+		6E45A29D20A18547009C6134 /* TestInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInitialView.swift; sourceTree = "<group>"; };
 		6E5E890B207350CE00837FF2 /* DPPageStateController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DPPageStateController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5E891220745B9B00837FF2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6E5E891420745D5700837FF2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -57,10 +58,7 @@
 		6EC0083920A020B70028FA28 /* DPPageStateControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPPageStateControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC0083A20A0212C0028FA28 /* NetworkStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateViewController.swift; sourceTree = "<group>"; };
 		6ED5E2AF20A052BA00DB29AE /* DPPageStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateViewController.swift; sourceTree = "<group>"; };
-		6ED5E2B120A0532E00DB29AE /* DPPageStateInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateInitialView.swift; sourceTree = "<group>"; };
-		6ED5E2B320A053B800DB29AE /* DPPageStateEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateEmptyView.swift; sourceTree = "<group>"; };
-		6ED5E2B520A053EE00DB29AE /* DPPageStateErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateErrorView.swift; sourceTree = "<group>"; };
-		6ED5E2B720A055B900DB29AE /* DPPageStateDefaultLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPPageStateDefaultLoadingView.swift; sourceTree = "<group>"; };
+		6ED5E2BD20A137C600DB29AE /* TestErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +115,10 @@
 				6E5E891420745D5700837FF2 /* CollectionViewController.swift */,
 				6EC0083A20A0212C0028FA28 /* NetworkStateViewController.swift */,
 				6ED5E2AF20A052BA00DB29AE /* DPPageStateViewController.swift */,
-				6ED5E2B120A0532E00DB29AE /* DPPageStateInitialView.swift */,
-				6ED5E2B320A053B800DB29AE /* DPPageStateEmptyView.swift */,
-				6ED5E2B520A053EE00DB29AE /* DPPageStateErrorView.swift */,
-				6ED5E2B720A055B900DB29AE /* DPPageStateDefaultLoadingView.swift */,
 				6E6B4B7620A0A5280024CCD0 /* TestLoadingView.swift */,
+				6ED5E2BD20A137C600DB29AE /* TestErrorView.swift */,
+				6E45A29B20A16E5A009C6134 /* TestEmptyView.swift */,
+				6E45A29D20A18547009C6134 /* TestInitialView.swift */,
 			);
 			path = DPPageStateControllerExample;
 			sourceTree = "<group>";
@@ -241,15 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC0083B20A0212C0028FA28 /* NetworkStateViewController.swift in Sources */,
-				6ED5E2B420A053B800DB29AE /* DPPageStateEmptyView.swift in Sources */,
 				6E5E891520745D5700837FF2 /* CollectionViewController.swift in Sources */,
+				6ED5E2BE20A137C600DB29AE /* TestErrorView.swift in Sources */,
 				6EA6AFC3206E2F04006DE8E5 /* ViewController.swift in Sources */,
 				6E6B4B7720A0A5280024CCD0 /* TestLoadingView.swift in Sources */,
-				6ED5E2B620A053EE00DB29AE /* DPPageStateErrorView.swift in Sources */,
 				6EA6AFC1206E2F04006DE8E5 /* AppDelegate.swift in Sources */,
-				6ED5E2B220A0532E00DB29AE /* DPPageStateInitialView.swift in Sources */,
 				6E5E891320745B9B00837FF2 /* BaseViewController.swift in Sources */,
-				6ED5E2B820A055B900DB29AE /* DPPageStateDefaultLoadingView.swift in Sources */,
+				6E45A29E20A18547009C6134 /* TestInitialView.swift in Sources */,
+				6E45A29C20A16E5A009C6134 /* TestEmptyView.swift in Sources */,
 				6ED5E2B020A052BA00DB29AE /* DPPageStateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

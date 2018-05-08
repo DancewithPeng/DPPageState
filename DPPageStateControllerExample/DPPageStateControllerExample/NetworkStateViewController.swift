@@ -28,18 +28,33 @@ class NetworkStateViewController: BaseViewController {
         
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
-        let request =
-        Alamofire.request("https://google.com").responseString { (response) in
-            if let str = response.value {
-                print(str)
-                self.pageState = .normal
-            } else if let error = response.error {
-                print(error)
-                self.pageState = .error(error)
+        pageState = .initial("准备开始")
+        DispatchQueue.global().asyncAfter(deadline: .now()+2) {
+//            self.pageState = .empty("Hello Empty View")
+//            self.pageState = .initial("啊啦啦啦啦啦啦")
+            self.pageState = .loading(nil)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now()+2) {
+                self.pageState = .empty("没有数据哦")
             }
         }
         
-        pageState = .loading(request.progress)
+        Alamofire.request("asdf").response { (response) in
+            
+        }
+//
+//        let request =
+//        Alamofire.request("https://google.com").responseString { (response) in
+//            if let str = response.value {
+//                print(str)
+//                self.pageState = .normal
+//            } else if let error = response.error {
+//                print(error)
+//                self.pageState = .error(error)
+//            }
+//        }
+//
+//        pageState = .loading(request.progress)
         
 //        pageState = .loading(progress)
 //        DispatchQueue.global().async {
@@ -64,6 +79,10 @@ class NetworkStateViewController: BaseViewController {
 //                }
 //            }
 //        }
+    }
+    
+    override func errorViewDidTap(tapGesture: UITapGestureRecognizer) {
+        pageState = .normal
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

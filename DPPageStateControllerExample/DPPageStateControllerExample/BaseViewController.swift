@@ -31,21 +31,6 @@ class MyView: UIView {
     }
 }
 
-class MyErrorView: UIView, DPPageStateErrorView {
-    
-    var error: Error
-    init(frame: CGRect = CGRect.zero, error: Error) {
-        self.error = error
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.error = MyError.test
-        super.init(coder: aDecoder)
-    }
-    
-}
-
 class BaseViewController: DPPageStateViewController {
 
     override func viewDidLoad() {

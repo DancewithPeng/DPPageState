@@ -11,15 +11,15 @@ import Foundation
 
 /// 页面状态
 ///
-/// - normal:  正常状态
+/// - normal:  正常状态，不会显示状态页
 /// - initial: 初始状态
 /// - empty:   空数据状态
 /// - error:   错误状态
 /// - loading: 加载状态
 public enum DPPageState {
     case normal
-    case initial
-    case empty(String?)
+    case initial(Any?)
+    case empty(Any?)
     case error(Error)
     case loading(Progress?)
 }
@@ -28,25 +28,13 @@ public enum DPPageState {
 /// 页面状态控制器
 public protocol DPPageStateController {
     
-    /// 初始状态页类型
-    associatedtype InitialView: UIView
-    
-    /// 空状态页类型
-    associatedtype EmptyView: UIView
-    
-    /// 错误状态页类型
-    associatedtype ErrorView: UIView, DPPageStateErrorView
-    
-    /// 加载页类型
-//    associatedtype LoadingView: DPPageStateLoadingView
-    
-    
     /// 页面状态
     var pageState: DPPageState { get set }        
     
-    func viewForInitial() -> InitialView
-    func viewForEmpty() -> EmptyView
-    func viewForError(_ error: Error) -> ErrorView
+    // 以下四个方法用于获取状态对应的状态页，每个方法都有可能反复调用多次
+    func viewForInitial(userInfo: Any?) -> DPPageStateInitialView
+    func viewForEmpty(userInfo: Any?) -> DPPageStateEmptyView
+    func viewForError(_ error: Error) -> DPPageStateErrorView
     func viewForLoading(progress: Progress?) -> DPPageStateLoadingView
     
     /// 状态页容器
@@ -54,7 +42,7 @@ public protocol DPPageStateController {
 }
 
 
-// MARK: - 为 `DPPageStateController` 协议添加 `stateDidChange(newState:)` 方法
+// MARK: - 为 `DPPageStateController` 协议添加 `defaultHandingForStateChanged(newState:)` 方法
 public extension DPPageStateController {
     
     /// 状态变化的默认处理
@@ -62,33 +50,29 @@ public extension DPPageStateController {
     /// - Parameter state: 新的状态
     func defaultHandingForStateChanged(newState state: DPPageState) {
 
-        var stateView: UIView? = nil
-
-        switch state {
-        case .initial:
-            stateView = viewForInitial()
-            stateView?.tag = DPPageStateViewTag.initial.rawValue
-        case .empty(let message):
-            stateView = viewForEmpty()
-            stateView?.tag = DPPageStateViewTag.empty.rawValue
-        case .error(let error):
-            stateView = viewForError(error)
-            stateView?.tag = DPPageStateViewTag.error.rawValue
-        case .loading(let progress):
-            let loadingView = viewForLoading(progress: progress)
-            loadingView.loadingProgress = progress
-            stateView = loadingView
-            stateView?.tag = DPPageStateViewTag.loading.rawValue
-        case .normal:
-            stateView = nil
-        }
-
-        if let sView = stateView {
+        // UI处理需要在主线程中执行
+        DispatchQueue.main.async {
             
-            if (sView.superview != stateContainerView) {
+            var stateView: UIView? = nil
+            
+            // 根据状态获取对应的StateView
+            switch state {
+            case .initial(let userInfo):
+                stateView = self.viewForInitial(userInfo: userInfo)
+            case .empty(let userInfo):
+                stateView = self.viewForEmpty(userInfo: userInfo)
+            case .error(let error):
+                stateView = self.viewForError(error)
+            case .loading(let progress):
+                stateView = self.viewForLoading(progress: progress)
+            case .normal:
+                stateView = nil
+            }
+            
+            // 添加或移除状态页
+            if let sView = stateView {
                 
-                // UI操作需要在主线程进行
-                DispatchQueue.main.async {
+                if (sView.superview != self.stateContainerView) {
                     
                     // 移除原本的StateView
                     self.removeStateViewFromContainerView()
@@ -108,10 +92,7 @@ public extension DPPageStateController {
                         sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor).isActive = true
                     }
                 }
-            }
-        } else {
-            
-            DispatchQueue.main.async {
+            } else {
                 // 移除原本的StateView
                 self.removeStateViewFromContainerView()
             }
@@ -126,40 +107,16 @@ public extension DPPageStateController {
         
         for subView in subViews {
             
-            switch subView.tag {
+            // 状态页
+            if subView is DPPageStateView {
                 
-            case DPPageStateViewTag.initial.rawValue: fallthrough
-            case DPPageStateViewTag.empty.rawValue: fallthrough
-            case DPPageStateViewTag.loading.rawValue:
+                // 加载状态页
                 if let loadingView = subView as? DPPageStateLoadingView {
-                    loadingView.loadingDidFinish()
+                    loadingView.loadingDidCancel()
                 }
-                fallthrough
-            case DPPageStateViewTag.error.rawValue:
+                
                 subView.removeFromSuperview()
-            default: break
             }
         }
     }
 }
-
-
-// MARK: - DPPageStateErrorView
-
-
-public protocol DPPageStateErrorView {
-    var error: Error { get set }
-}
-
-
-// MARK: - Tag Defines
-
-
-/// 状态View的Tag
-private enum DPPageStateViewTag: Int {
-    case initial    = 666666
-    case empty      = 666665;
-    case error      = 666664;
-    case loading    = 666663;
-}
-

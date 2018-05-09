@@ -17,7 +17,7 @@ private let kLoadingProgressEncodeKey = "kLoadingProgressEncodeKey"
 open class LoadingView: StateView {
     
     /// 加载进度
-    var loadingProgress: Progress? { didSet { loadingProgressDidChange(loadingProgress) } }
+    public var loadingProgress: Progress? { didSet { loadingProgressDidChange(loadingProgress) } }
     
     
     // MARK: - Initialization

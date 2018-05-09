@@ -25,25 +25,25 @@ public protocol StateController {
     ///
     /// - Parameter userInfo: 附带的用户信息
     /// - Returns: 初始状态页
-    func viewForInitial(with userInfo: Any?) -> InitialView
+    func viewForInitial(with userInfo: Any?) -> DPPageState.InitialView
     
     /// 获取空状态页
     ///
     /// - Parameter userInfo: 附带的用户信息
     /// - Returns: 空状态页
-    func viewForEmpty(with userInfo: Any?) -> EmptyView
+    func viewForEmpty(with userInfo: Any?) -> DPPageState.EmptyView
     
     /// 获取错误状态页
     ///
     /// - Parameter error: 错误信息
     /// - Returns: 错误状态页
-    func viewForError(_ error: Error) -> ErrorView
+    func viewForError(_ error: Error) -> DPPageState.ErrorView
     
     /// 获取加载状态页
     ///
     /// - Parameter progress: 加载进度
     /// - Returns: 加载状态页
-    func viewForLoading(with progress: Progress?) -> LoadingView
+    func viewForLoading(with progress: Progress?) -> DPPageState.LoadingView
 }
 
 

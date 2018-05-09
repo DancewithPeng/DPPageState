@@ -16,7 +16,11 @@ private let kErrorEncodeKey = "kErrorEncodeKey"
 /// 错误状态页
 open class ErrorView: StateView {
     
+    /// 错误信息
     public var error: Error { didSet { errorDidChange(error) } }
+    
+    
+    // MARK: - Initialization
     
     public init(error: Error) {
         self.error = error
@@ -37,5 +41,11 @@ open class ErrorView: StateView {
         super.encode(with: aCoder)
     }
     
+    
+    // MARK: - Override Points
+    
+    /// 错误信息变更，子类应该重写此方法来处理 `error` 的变更
+    ///
+    /// - Parameter error: 错误信息
     open func errorDidChange(_ error: Error) {}
 }

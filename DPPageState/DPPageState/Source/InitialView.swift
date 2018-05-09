@@ -19,6 +19,10 @@ open class InitialView: StateView {
     /// 用户信息，预留属性，子类可以直接使用此属性传递相关信息
     public var userInfo: Any? { didSet { userInfoDidChange(userInfo) } }
     
+    
+    // MARK: - Initialization
+    
+    
     public init(userInfo: Any? = nil) {
         self.userInfo = userInfo
         super.init(frame: CGRect.zero)
@@ -34,7 +38,11 @@ open class InitialView: StateView {
         super.encode(with: aCoder)
     }
     
-    /// 用户信息改变
+    
+    // MARK: - Override Points
+    
+    
+    /// 用户信息改变，子类应该重写此方法来处理 `userInfo` 的变更
     ///
     /// - Parameter userInfo: 新的用户信息
     open func userInfoDidChange(_ userInfo: Any?) {}

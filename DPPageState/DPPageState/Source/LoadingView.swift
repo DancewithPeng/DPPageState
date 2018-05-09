@@ -19,6 +19,9 @@ open class LoadingView: StateView {
     /// 加载进度
     var loadingProgress: Progress? { didSet { loadingProgressDidChange(loadingProgress) } }
     
+    
+    // MARK: - Initialization
+    
     public init(loadingProgress: Progress? = nil) {
         self.loadingProgress = loadingProgress
         super.init(frame: CGRect.zero)
@@ -37,6 +40,9 @@ open class LoadingView: StateView {
         aCoder.encode(loadingProgress, forKey: kLoadingProgressEncodeKey)
         super.encode(with: aCoder)
     }
+    
+    
+    // MARK: - Override Points
     
     /// 加载开始
     open func loadingDidStart() {}
@@ -61,6 +67,8 @@ open class LoadingView: StateView {
     /// 加载完成
     open func loadingDidFinish() {}
     
+    
+    // MARK: - Helper Methods
     
     /// 进度对象改变
     private func loadingProgressDidChange(_ newProgress: Progress?) {
@@ -101,7 +109,9 @@ open class LoadingView: StateView {
         }
     }
     
-    // KVO
+    
+    // MARK: - KVO
+    
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         // Progress.completedUnitCount

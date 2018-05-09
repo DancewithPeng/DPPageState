@@ -7,13 +7,33 @@
 //
 
 import UIKit
+import Alamofire
+import WebKit
 
 class RequestBindingViewController: StateViewController {
+    
+    @IBOutlet weak var webView: WKWebView!
+    
+    var request: Alamofire.DataRequest?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.request = Alamofire.request("https://www.baidu.com").responseString { (response) in
+            if let value = response.value {
+                self.webView.loadHTMLString(value, baseURL: nil)
+                self.pageState = .normal
+            } else if let error = response.error {
+                self.pageState = .error(error)
+            }
+        }
+        
+        pageState = .loading(self.request?.progress)
     }
 
     override func didReceiveMemoryWarning() {

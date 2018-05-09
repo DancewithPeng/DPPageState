@@ -145,17 +145,25 @@
         <scene sceneID="51v-CJ-gpJ">
             <objects>
                 <viewController id="uTV-Nt-3NB" customClass="RequestBindingViewController" customModule="DPPageStateExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UhP-Hg-XdK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="77e-fB-L2L"/>
-                    </view>
                     <tabBarItem key="tabBarItem" title="Request Binding" id="zN0-6P-dYv"/>
+                    <navigationItem key="navigationItem" id="4cu-K3-L4u">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="3SS-Qr-Cyx" id="Zf6-Wa-q8i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7X7-a6-Mbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="3SS-Qr-Cyx">
+                    <connections>
+                        <outlet property="delegate" destination="uTV-Nt-3NB" id="zPA-gb-Ic6"/>
+                        <outlet property="searchContentsController" destination="uTV-Nt-3NB" id="mbl-bF-rLo"/>
+                        <outlet property="searchResultsDataSource" destination="uTV-Nt-3NB" id="tJ5-bt-cGf"/>
+                        <outlet property="searchResultsDelegate" destination="uTV-Nt-3NB" id="Q7d-rE-sE4"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="377" y="1583"/>
+            <point key="canvasLocation" x="1128.8" y="1582.7586206896553"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2y9-6u-wQE">
@@ -168,13 +176,30 @@
                     </tabBar>
                     <connections>
                         <segue destination="ZyQ-Au-2jR" kind="relationship" relationship="viewControllers" id="gWz-m9-ATp"/>
-                        <segue destination="uTV-Nt-3NB" kind="relationship" relationship="viewControllers" id="QAw-yj-LJB"/>
+                        <segue destination="d23-Kh-t2K" kind="relationship" relationship="viewControllers" id="NLy-rI-Kej"/>
                         <segue destination="at4-ni-idd" kind="relationship" relationship="viewControllers" id="oFH-78-xhM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4O-h4-jwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-820" y="1583"/>
+        </scene>
+        <!--Request Binding-->
+        <scene sceneID="zig-pd-sNV">
+            <objects>
+                <navigationController id="d23-Kh-t2K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Request Binding" id="qQX-M1-je5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4n-g7-Y6X">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uTV-Nt-3NB" kind="relationship" relationship="rootViewController" id="H9G-U0-jF5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy4-Xl-NLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="1583"/>
         </scene>
     </scenes>
 </document>

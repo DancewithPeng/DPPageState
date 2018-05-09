@@ -17,7 +17,10 @@ private let kLoadingProgressEncodeKey = "kLoadingProgressEncodeKey"
 open class LoadingView: StateView {
     
     /// 加载进度
-    public var loadingProgress: Progress? { didSet { loadingProgressDidChange(loadingProgress) } }
+    public var loadingProgress: Progress? {
+        willSet { loadingProgressWillChange(loadingProgress) }
+        didSet { loadingProgressDidChange(loadingProgress) }
+    }
     
     
     // MARK: - Initialization
@@ -70,6 +73,14 @@ open class LoadingView: StateView {
     
     // MARK: - Helper Methods
     
+    
+    /// 进度对象将要改变
+    private func loadingProgressWillChange(_ oldProgress: Progress?) {
+        if let progress = oldProgress {
+            progress.removeObserver(self, forKeyPath: #keyPath(Progress.completedUnitCount))
+        }
+    }
+    
     /// 进度对象改变
     private func loadingProgressDidChange(_ newProgress: Progress?) {
         
@@ -81,7 +92,7 @@ open class LoadingView: StateView {
         if let progress = newProgress {
             
             // 监听进度变化
-            progress.addObserver(self, forKeyPath: "completedUnitCount", options: [.initial, .new], context: nil)
+            progress.addObserver(self, forKeyPath: #keyPath(Progress.completedUnitCount), options: [.initial, .new], context: nil)
             
             
             // 处理相关事件
@@ -115,7 +126,7 @@ open class LoadingView: StateView {
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         // Progress.completedUnitCount
-        if let progress = object as? Progress, keyPath == "completedUnitCount" {
+        if let progress = object as? Progress, keyPath == #keyPath(Progress.completedUnitCount) {
             
             // 更新进度
             DispatchQueue.main.async {
@@ -129,5 +140,9 @@ open class LoadingView: StateView {
                 }
             }
         }
+    }
+    
+    deinit {
+        loadingProgress?.removeObserver(self, forKeyPath: #keyPath(Progress.completedUnitCount))
     }
 }

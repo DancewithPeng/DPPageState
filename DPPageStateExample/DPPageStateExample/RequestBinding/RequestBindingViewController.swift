@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import WebKit
+import DPLog
 
 class RequestBindingViewController: StateViewController {
     
@@ -19,25 +20,30 @@ class RequestBindingViewController: StateViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reloadRequest()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func emptyViewDidTap(_ tapGesture: UITapGestureRecognizer) {
+        reloadRequest()
+    }
+    
+    override func errorViewDidTap(_ tapGesture: UITapGestureRecognizer) {
+        reloadRequest()
+    }
+    
+    private func reloadRequest() {
         
-        self.request = Alamofire.request("https://www.baidu.com").responseString { (response) in
+        request = Alamofire.request("https://www.apple.com").responseString { (response) in
             if let value = response.value {
                 self.webView.loadHTMLString(value, baseURL: nil)
                 self.pageState = .normal
+                LogInfo(value)
             } else if let error = response.error {
                 self.pageState = .error(error)
+                LogError(error)
             }
         }
         
-        pageState = .loading(self.request?.progress)
+        pageState = .loading(request?.progress)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }    
 }

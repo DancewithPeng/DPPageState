@@ -7,6 +7,7 @@
 //
 
 import DPPageState
+import DPLog
 
 /// 空状态页
 class ExampleEmptyView: DPPageState.EmptyView {
@@ -45,6 +46,6 @@ class ExampleEmptyView: DPPageState.EmptyView {
     }
     
     deinit {
-        print("🐯🐯🐯")
+        LogInfo("🐯🐯🐯")
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import DPPageState
+import DPLog
 
 /// 初始状态页
 class ExampleInitialView: DPPageState.InitialView {
@@ -53,6 +54,6 @@ class ExampleInitialView: DPPageState.InitialView {
     }
     
     deinit {
-        print("🐶🐶🐶")
+        LogInfo("🐶🐶🐶")
     }
 }

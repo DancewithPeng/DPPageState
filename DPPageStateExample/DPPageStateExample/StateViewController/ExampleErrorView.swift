@@ -7,6 +7,7 @@
 //
 
 import DPPageState
+import DPLog
 
 /// 错误状态页
 class ExampleErrorView: DPPageState.ErrorView {
@@ -53,7 +54,7 @@ class ExampleErrorView: DPPageState.ErrorView {
         iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
-    deinit {
-        print("🦋🦋🦋")
+    deinit {        
+        LogInfo("🦋🦋🦋")
     }
 }

@@ -12,6 +12,13 @@ import DPPageState
 /// 带状态控制的ViewController，实现 `DPPageState.StateController` 中属性和方法
 class StateViewController: UIViewController, DPPageState.StateController {
     
+    /// 空白页点击手势
+    private lazy var emptyViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(emptyViewDidTap(_:)))
+    
+    /// 错误页点击手势
+    private lazy var errorViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(errorViewDidTap(_:)))
+    
+    
     // 页面状态
     var pageState: State = .normal { didSet { defaultHandingChange(pageState) } }
     
@@ -25,16 +32,35 @@ class StateViewController: UIViewController, DPPageState.StateController {
     
     // 空状态页
     func viewForEmpty(with userInfo: Any?) -> EmptyView {
-        return ExampleEmptyView(userInfo: userInfo)
+        
+        let emptyView = ExampleEmptyView(userInfo: userInfo)
+        if emptyViewTapGesture.view != emptyView {
+            emptyView.addGestureRecognizer(emptyViewTapGesture)
+        }
+        
+        return emptyView
     }
     
     // 错误状态页
     func viewForError(_ error: Error) -> ErrorView {
-        return ExampleErrorView(error: error)
+        let errorView = ExampleErrorView(error: error)
+        if errorViewTapGesture.view != errorView {
+            errorView.addGestureRecognizer(errorViewTapGesture)
+        }
+        return errorView
     }
     
     // 加载状态页
     func viewForLoading(with progress: Progress?) -> LoadingView {
         return ExampleLoadingView(loadingProgress: progress)
     }
+    
+    
+    // MARK: - Override Points
+    
+    @objc
+    open func emptyViewDidTap(_ tapGesture: UITapGestureRecognizer) {}
+    
+    @objc
+    open func errorViewDidTap(_ tapGesture: UITapGestureRecognizer) {}
 }

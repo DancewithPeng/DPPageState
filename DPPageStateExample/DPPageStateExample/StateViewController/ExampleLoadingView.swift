@@ -7,6 +7,7 @@
 //
 
 import DPPageState
+import DPLog
 
 /// 加载状态页
 class ExampleLoadingView: DPPageState.LoadingView {
@@ -91,6 +92,6 @@ class ExampleLoadingView: DPPageState.LoadingView {
     }
     
     deinit {
-        print("🐮🐮🐮")
+        LogInfo("🐮🐮🐮")
     }
 }

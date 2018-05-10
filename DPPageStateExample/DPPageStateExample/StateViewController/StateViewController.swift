@@ -13,6 +13,9 @@ import DPPageState
 class StateViewController: UIViewController, DPPageState.StateController {
     
     /// 空白页点击手势
+    private lazy var initialViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(initialViewDidTap(_:)))
+    
+    /// 空白页点击手势
     private lazy var emptyViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(emptyViewDidTap(_:)))
     
     /// 错误页点击手势
@@ -27,7 +30,11 @@ class StateViewController: UIViewController, DPPageState.StateController {
     
     // 初始状态页
     func viewForInitial(with userInfo: Any?) -> InitialView {
-        return ExampleInitialView(userInfo: userInfo)
+        let initialView = ExampleInitialView(userInfo: userInfo)
+        if initialViewTapGesture.view != initialView {
+            initialView.addGestureRecognizer(initialViewTapGesture)
+        }
+        return initialView
     }
     
     // 空状态页
@@ -63,4 +70,7 @@ class StateViewController: UIViewController, DPPageState.StateController {
     
     @objc
     open func errorViewDidTap(_ tapGesture: UITapGestureRecognizer) {}
+    
+    @objc
+    open func initialViewDidTap(_ tapGesture: UITapGestureRecognizer) {}
 }

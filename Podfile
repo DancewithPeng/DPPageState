@@ -8,6 +8,7 @@ use_frameworks!                     # 使用framework代替静态库
 
 
 pod 'Alamofire'
+pod 'DPLog'
 
 
 target 'DPPageStateExample' do                   # target 对应Xcode中的target

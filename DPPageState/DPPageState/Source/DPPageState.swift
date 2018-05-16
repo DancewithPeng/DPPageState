@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// 页面状态控制器
 public protocol StateController {
     
@@ -25,25 +24,25 @@ public protocol StateController {
     ///
     /// - Parameter userInfo: 附带的用户信息
     /// - Returns: 初始状态页
-    func viewForInitial(with userInfo: Any?) -> InitialView
+    func viewForInitial(with userInfo: Any?) -> DPPageState.InitialView
     
     /// 获取空状态页
     ///
     /// - Parameter userInfo: 附带的用户信息
     /// - Returns: 空状态页
-    func viewForEmpty(with userInfo: Any?) -> EmptyView
+    func viewForEmpty(with userInfo: Any?) -> DPPageState.EmptyView
     
     /// 获取错误状态页
     ///
     /// - Parameter error: 错误信息
     /// - Returns: 错误状态页
-    func viewForError(_ error: Error) -> ErrorView
+    func viewForError(_ error: Error) -> DPPageState.ErrorView
     
     /// 获取加载状态页
     ///
     /// - Parameter progress: 加载进度
     /// - Returns: 加载状态页
-    func viewForLoading(with progress: Progress?) -> LoadingView
+    func viewForLoading(with progress: Progress?) -> DPPageState.LoadingView
 }
 
 
@@ -92,9 +91,18 @@ public extension StateController {
                     sView.trailingAnchor.constraint(equalTo: self.stateContainerView.trailingAnchor).isActive = true
                     sView.bottomAnchor.constraint(equalTo: self.stateContainerView.bottomAnchor).isActive = true
                     
-                    if self.stateContainerView is UIScrollView {
-                        sView.heightAnchor.constraint(equalTo: self.stateContainerView.heightAnchor).isActive = true
-                        sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor).isActive = true
+                    if let scrollView = self.stateContainerView as? UIScrollView {
+                        
+                        var insetHeight = scrollView.contentInset.top + scrollView.contentInset.bottom
+                        var insetWidth = scrollView.contentInset.left + scrollView.contentInset.right
+                        
+                        if #available(iOS 11, *) {
+                            insetHeight += (scrollView.adjustedContentInset.top + scrollView.adjustedContentInset.bottom)
+                            insetWidth += (scrollView.adjustedContentInset.left + scrollView.adjustedContentInset.right)
+                        }
+                        
+                        sView.heightAnchor.constraint(equalTo: self.stateContainerView.heightAnchor, constant: -insetHeight).isActive = true
+                        sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor, constant: -insetWidth).isActive = true
                     }
                 }
             } else {

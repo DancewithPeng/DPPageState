@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DPLog
 
 /// 页面状态控制器
 public protocol StateController {
@@ -96,17 +95,14 @@ public extension StateController {
                         
                         var insetHeight = scrollView.contentInset.top + scrollView.contentInset.bottom
                         var insetWidth = scrollView.contentInset.left + scrollView.contentInset.right
+                        
                         if #available(iOS 11, *) {
                             insetHeight += (scrollView.adjustedContentInset.top + scrollView.adjustedContentInset.bottom)
                             insetWidth += (scrollView.adjustedContentInset.left + scrollView.adjustedContentInset.right)
                         }
-                                                
-                        LogInfo("Hello world")
-                        LogInfo(insetHeight)
-                        LogInfo(insetWidth)
                         
                         sView.heightAnchor.constraint(equalTo: self.stateContainerView.heightAnchor, constant: -insetHeight).isActive = true
-                        sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor constant: -insetWidth).isActive = true
+                        sView.widthAnchor.constraint(equalTo: self.stateContainerView.widthAnchor, constant: -insetWidth).isActive = true
                     }
                 }
             } else {

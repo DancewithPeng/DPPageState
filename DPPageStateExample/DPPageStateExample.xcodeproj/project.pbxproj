@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FFEE0F8C0E84AAD76FE3EF0 /* Pods_DPPageStateExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3710B04317F9ACD74FF7BAD4 /* Pods_DPPageStateExample.framework */; };
 		6E0278A920A2D19700E77688 /* StateSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278A820A2D19700E77688 /* StateSwitchViewController.swift */; };
 		6E0278AB20A2D1D900E77688 /* RequestBindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278AA20A2D1D900E77688 /* RequestBindingViewController.swift */; };
 		6E0278AD20A2D47100E77688 /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278AC20A2D47100E77688 /* StateViewController.swift */; };
@@ -16,6 +17,9 @@
 		6E0278BD20A2DAB900E77688 /* ExampleLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278BC20A2DAB900E77688 /* ExampleLoadingView.swift */; };
 		6E0278CC20A3E79600E77688 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278CB20A3E79600E77688 /* ScrollViewController.swift */; };
 		6E0278CE20A4140800E77688 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0278CD20A4140800E77688 /* TableViewController.swift */; };
+		6E601D2F20AC8F1200183260 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E601D2E20AC8F1200183260 /* CollectionViewController.swift */; };
+		6E601D3220AC932D00183260 /* DPPageState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E601D3020AC932800183260 /* DPPageState.framework */; };
+		6E601D3320AC932D00183260 /* DPPageState.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E601D3020AC932800183260 /* DPPageState.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EA6AFC1206E2F04006DE8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC0206E2F04006DE8E5 /* AppDelegate.swift */; };
 		6EA6AFC6206E2F04006DE8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC4206E2F04006DE8E5 /* Main.storyboard */; };
 		6EA6AFC8206E2F04006DE8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA6AFC7206E2F04006DE8E5 /* Assets.xcassets */; };
@@ -29,6 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6E601D3320AC932D00183260 /* DPPageState.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		25352A5740D5A81AE4A00415 /* Pods-DPPageStateControllerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		3710B04317F9ACD74FF7BAD4 /* Pods_DPPageStateExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DPPageStateExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF41CF032487FC241ADD1CE /* Pods-DPPageStateExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample.release.xcconfig"; sourceTree = "<group>"; };
 		57C414293025363F3168A9E0 /* Pods-DPPageStateExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateExample/Pods-DPPageStateExample.debug.xcconfig"; sourceTree = "<group>"; };
 		69FCB7F1A7F0EFAE230F7DAC /* Pods-DPPageStateControllerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DPPageStateControllerExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DPPageStateControllerExample/Pods-DPPageStateControllerExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +55,8 @@
 		6E0278BC20A2DAB900E77688 /* ExampleLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingView.swift; sourceTree = "<group>"; };
 		6E0278CB20A3E79600E77688 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		6E0278CD20A4140800E77688 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		6E601D2E20AC8F1200183260 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		6E601D3020AC932800183260 /* DPPageState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DPPageState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA6AFC0206E2F04006DE8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA6AFC5206E2F04006DE8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EA6AFC7206E2F04006DE8E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E601D3220AC932D00183260 /* DPPageState.framework in Frameworks */,
+				1FFEE0F8C0E84AAD76FE3EF0 /* Pods_DPPageStateExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +122,7 @@
 			children = (
 				6E0278CB20A3E79600E77688 /* ScrollViewController.swift */,
 				6E0278CD20A4140800E77688 /* TableViewController.swift */,
+				6E601D2E20AC8F1200183260 /* CollectionViewController.swift */,
 			);
 			path = ScrollPage;
 			sourceTree = "<group>";
@@ -119,6 +130,8 @@
 		6E5E890A207350CE00837FF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E601D3020AC932800183260 /* DPPageState.framework */,
+				3710B04317F9ACD74FF7BAD4 /* Pods_DPPageStateExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,6 +288,7 @@
 				6E0278B720A2D80800E77688 /* ExampleErrorView.swift in Sources */,
 				6E0278B920A2D81F00E77688 /* ExampleInitialView.swift in Sources */,
 				6EA6AFC1206E2F04006DE8E5 /* AppDelegate.swift in Sources */,
+				6E601D2F20AC8F1200183260 /* CollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

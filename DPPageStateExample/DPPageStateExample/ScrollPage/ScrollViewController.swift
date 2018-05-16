@@ -20,6 +20,8 @@ class ScrollViewController: StateViewController {
         pageState = .initial(nil)
         
         scrollView.subviews.first?.addGestureRecognizer(normalTapGesture)
+        
+        scrollView.alwaysBounceVertical = true
     }
     
     override var stateContainerView: UIView {

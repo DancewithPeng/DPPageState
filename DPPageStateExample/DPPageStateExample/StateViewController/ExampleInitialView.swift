@@ -41,8 +41,9 @@ class ExampleInitialView: DPPageState.InitialView {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        centerLayoutGuide.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        centerLayoutGuide.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        
+        centerLayoutGuide.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        centerLayoutGuide.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         activityIndicator.leadingAnchor.constraint(equalTo: centerLayoutGuide.leadingAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: centerLayoutGuide.centerYAnchor).isActive = true

@@ -13,7 +13,7 @@ import DPLog
 
 class RequestBindingViewController: StateViewController {
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var webView: UIWebView!
     
     var request: Alamofire.DataRequest?
 
@@ -35,7 +35,7 @@ class RequestBindingViewController: StateViewController {
         
         request = Alamofire.request("https://www.apple.com").responseString { (response) in
             if let value = response.value {
-                self.webView.loadHTMLString(value, baseURL: nil)
+//                self.webView.loadHTMLString(value, baseURL: nil)
                 self.pageState = .normal
                 LogInfo(value)
             } else if let error = response.error {

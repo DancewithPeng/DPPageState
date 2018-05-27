@@ -7,7 +7,7 @@ DEPENDENCIES:
   - DPLog
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - DPLog
 
@@ -17,4 +17,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: fdbd97e3ac9bdfdfb673465ea36ad8688192b0c2
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2
